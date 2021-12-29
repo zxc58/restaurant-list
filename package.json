@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/zxc58/restaurant-list#readme",
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "express-handlebars": "^3.0.0"
   }
 }
