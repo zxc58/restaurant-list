@@ -15,11 +15,14 @@ git clone到本地端
 $git clone https://github.com/zxc58/restaurant-list.git
 
 進入專案資料夾
+
 $cd restaurant-list
 
 安裝必要套件
+
 $npm install
 
 用nodemon啟動
+
 $npm run dev
 
