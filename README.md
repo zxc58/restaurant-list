@@ -11,6 +11,7 @@ nodemon
 開啟終端機 安裝/啟動
 
 git clone到本地端
+
 $git clone https://github.com/zxc58/restaurant-list.git
 
 進入專案資料夾
