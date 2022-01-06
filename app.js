@@ -15,12 +15,12 @@ app.get("/restaurants",(req,res)=>{
     res.render("index",{restaurants});
 });
 app.get("/restaurants/:id",(req,res)=>{
-    let restaurant = restaurants.find(each=>each.id.toString()===req.params.id);
+    const restaurant = restaurants.find(each=>each.id.toString()===req.params.id);
     res.render("show",{restaurant});
 });
 app.get("/search",(req,res)=>{
-    let search_value = req.query.keyword.toLowerCase();
-    let search_result = restaurants.filter(each=>
+    const search_value = req.query.keyword.toLowerCase();
+    const search_result = restaurants.filter(each=>
         each.name.toLowerCase().includes(search_value)||each.category.toLowerCase().includes(search_value)||each.name_en.toLowerCase().includes(search_value)
     );
     res.render("index",{restaurants:search_result,search_value:req.query.keyword});
