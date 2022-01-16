@@ -1,18 +1,36 @@
-//設定模組 常數
+//require模組 設定常數
 const express = require("express") ;
+const exphbs = require("express-handlebars");
+const mongoose = require("mongoose");
+const Restaurant = require("./models/restaurant");
+//const restaurants = require("./restaurant.json").results; 
 const app = express() ;
 const port = 3000 ;
-const restaurants = require("./restaurant.json").results; 
-const exphbs = require('express-handlebars');
+const db = mongoose.connection;
 
 //express設定
+mongoose.connect("mongodb://localhost/restaurant-list");
+db.on("error",()=>{
+    console.log("db error");
+});
+db.once("open",()=>{
+    console.log("db open");
+});
+
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.use(express.static('public'));
 
 //路由設定
 app.get("/restaurants",(req,res)=>{
-    res.render("index",{restaurants});
+    Restaurant.find().lean().then(restaurants=>{
+        //console.log(restaurants);
+        res.render("index",{restaurants});
+    })
+    .catch(error=>{
+        console.log(error);
+    });
+    
 });
 app.get("/restaurants/:id",(req,res)=>{
     const restaurant = restaurants.find(each=>each.id.toString()===req.params.id);
