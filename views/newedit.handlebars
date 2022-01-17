@@ -1,0 +1,19 @@
+<header>
+  <!-- navigation -->
+  <nav class="navbar navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+          <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png" width="30" height="30" class="d-inline-block align-top" alt="好。吃">
+          我的餐廳清單
+        </a>
+    </div>
+  </nav>
+
+  <div class="banner"></div>
+</header>
+<h1 class="mb-1 restaurant-show-title">{{page}}</h1>
+<form action="{{action}}" method="POST">
+    <label for="name" >name:</label>
+    <input type="text" name="name" value="{{restaurant.name}}"/>
+    <input type="submit">
+</form>
