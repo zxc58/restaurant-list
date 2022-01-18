@@ -49,7 +49,8 @@ header {
     box-shadow: none;
     border-color: #ced4da;
   }
-  
+  .form01{display: inline-block;}
+
   .card {
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     

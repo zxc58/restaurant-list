@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 
 
 const resSchema = new mongoose.Schema({
-    id : {type:Number},
     name : {type:String},
     name_en : {type:String},
     category : {type:String},

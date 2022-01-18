@@ -50,9 +50,11 @@
                 </span>
               </div>
               <div class="card-footer text-right">
-                <a href="/restaurants//edit/{{this._id}}">Edit</a>
+                <a href="/restaurants/{{this._id}}/edit">Edit</a>
                 <a href="/restaurants/{{this._id}}">Detail</a>
-                <a href="/restaurants/{{this._id}}">Delete</a>  
+                <form action="/restaurants/{{this._id}}/delete" method="POST" class="form01">
+                  <input type="submit" value="delete"/>  
+                </form>  
               </div>
             </div>
           </a>
