@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 
 const resSchema = new mongoose.Schema({
-    name : {type:String},
+    name : {type:String ,required:true},
     name_en : {type:String},
     category : {type:String},
     image : {type:String},

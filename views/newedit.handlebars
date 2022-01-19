@@ -15,27 +15,43 @@
 <div class="container search-bar">
   <div class="search-bar-outer">
     <div class="search-bar-inner">
-      <form action="{{action}}" method="POST">
-    <label for="name" >name:</label>
-    <input type="text" name="name" value="{{restaurant.name}}" required/><br/>
-    <label for="name_en">English name:</label>
-    <input type="text" name=="name_en" value="{{restaurant.name_en}}" pattern="[\w\s]+" required><br/>
-    <label for="google_map">map url:</label>
-    <input type="url" name="google_map" value="{{restaurant.google_map}}"/><br/>
-    <label for="category">category:</label>
-    <input type="text" name="category" value="{{restaurant.category}}" required/><br/>
-    <label for="image">image:</label>
-    <input type="url" name="image" value="{{restaurant.image}}"/><br/>
-    <label for="location">location:</label>
-    <input type="text" name="location" value="{{restaurant.location}}" pattern="[\u4e00-\u9ta5\w\s]+"/><br/>
-    <label for="phone">phone:</label>
-    <input type="tel" name="phone" value="{{restaurant.phone}}"/><br/>
-    <label for="rating">rating:</label>
-    <input type="number" value="{{restaurant.rating}}" min="0" max="5" required/><br/>
-    <label for="description">description</label><br/>
-    <textarea name="description"  rows="10" cols="30" required >{{restaurant.description}}</textarea><br/>
-    <input type="submit">
-</form>
+      <form class="form-group" action="{{action}}" method="POST">
+        <label for="name" >name:</label>
+        <input class="form-control" type="text" name="name" value="{{restaurant.name}}" 
+        placeholder="必填" required/><br/>
+        
+        <label for="name_en">English name:</label>
+        <input class="form-control" type="text" name=="name_en" placeholder="輸入英文、數字"
+        value="{{restaurant.name_en}}" pattern="^[^\u4e00-\u9ta5]+$" required><br/>
+        
+        <label for="google_map">map url:</label>
+        <input class="form-control" type="url" name="google_map" value="{{restaurant.google_map}}" placeholder="輸入url"/><br/>
+        
+        <label for="category">category:</label>
+        <input class="form-control" type="text" name="category" value="{{restaurant.category}}" 
+        placeholder="必填" required/><br/>
+        
+        <label for="image">image:</label>
+        <input class="form-control" type="url" name="image" value="{{restaurant.image}}"
+        placeholder="url"/><br/>
+        
+        <label for="location">location:</label>
+        <input class="form-control" type="text" name="location" value="{{restaurant.location}}" 
+        pattern="^[\u4e00-\u9ta5\w\s]+$" placeholder="輸入中英文 數字"/><br/>
+        
+        <label for="phone">phone:</label>
+        <input class="form-control" type="tel" name="phone" value="{{restaurant.phone}}" pattern="^[\d\s]+$"
+        placeholder="輸入數字"/><br/>
+        
+        <label for="rating">rating:</label>
+        <input class="form-control" type="text" value="{{restaurant.rating}}" pattern="^[0-5]\.?[1-9]?" 
+        placeholder="輸入數字 如1.5" required/><br/>
+        
+        <label for="description">description</label><br/>
+        <textarea class="form-control" name="description" placeholder="必填" required>{{restaurant.description}}</textarea><br/>
+        
+        <button type="submit" class="btn btn-success">提交</button>
+      </form>
     </div>
   </div>
 </div>
