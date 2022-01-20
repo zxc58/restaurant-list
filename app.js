@@ -1,7 +1,7 @@
 //require模組 設定常數
 const express = require("express") ;
 const exphbs = require("express-handlebars");
-const { redirect } = require("express/lib/response");
+//const { redirect } = require("express/lib/response");
 const mongoose = require("mongoose");
 const Restaurant = require("./models/restaurant");
 const app = express() ;
