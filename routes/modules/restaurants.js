@@ -27,11 +27,11 @@ router.get("/:_id",(req,res)=>{
 //U
 router.get("/:_id/edit",(req,res)=>{
     Restaurant.findById(req.params._id).lean().then(restaurant=>{
-        res.render("newedit",{restaurant,action:`/restaurants/${req.params._id}/edit`,page:"Edit Page"});
+        res.render("newedit",{restaurant,action:`/restaurants/${req.params._id}?_method=PUT`,page:"Edit Page"});
     })
     .catch(err=>console.log(err));
 });
-router.post("/:_id/edit",(req,res)=>{
+router.put("/:_id",(req,res)=>{
     const a = req.body; 
     
     if((/^[\w\s]+$/.test(a.name_en))&&(/^[\d\s]+$/.test(a.phone))&&(0<=a.rating<=5)&&
@@ -44,7 +44,7 @@ router.post("/:_id/edit",(req,res)=>{
 });
 
 //D
-router.post("/:_id/delete",(req,res)=>{
+router.delete("/:_id",(req,res)=>{
     Restaurant.findById(req.params._id)
     .then(restaurant=>{
         return restaurant.remove();
