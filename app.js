@@ -41,9 +41,7 @@ app.get("/",(req,res)=>{
     Restaurant.find().lean().then(restaurants=>{
         res.render("index",{restaurants});
     })
-    .catch(error=>{
-        console.log("01 error");
-    });
+    .catch(error=>console.log(err));
 });
 app.get("/restaurants/:_id",(req,res)=>{
     Restaurant.findById(req.params._id).lean().then(restaurant=>{
@@ -89,8 +87,7 @@ app.post("/restaurants/:_id/delete",(req,res)=>{
         return restaurant.remove();
     })
     .then(()=>res.redirect("/"))
-    .catch(err=>{console.log(err);
-    });
+    .catch(err=>console.log(err));
 });
 //啟動監聽
 app.listen(port,()=>{
