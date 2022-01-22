@@ -16,6 +16,7 @@
   <div class="search-bar-outer">
     <div class="search-bar-inner">
       <form class="form-group" action="{{action}}" method="POST">
+        {{{message}}}
         <label for="name" >name:</label>
         <input class="form-control" type="text" name="name" value="{{restaurant.name}}" 
         placeholder="必填" /><br/>
@@ -53,7 +54,7 @@
         <input type="text" name="this_req_sendby" value="{{page}}" style="display:none" >
         
         <button type="submit" class="btn btn-success">提交</button>
-        {{message}}
+
       </form>
     </div>
   </div>

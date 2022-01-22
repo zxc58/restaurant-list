@@ -1,8 +1,9 @@
 module.exports = {
     validationGuard:(req,res,next)=>{
-        console.log(req.url);
+//篩選出put post        
         if(req.method==="GET"||req.method==="DELETE")
             next();
+//開始認證資料        
         else if(
             (/^[\w\s]+$/.test(req.body.name_en))&&
             (/^[\d\s]+$/.test(req.body.phone))&&
@@ -15,14 +16,15 @@ module.exports = {
             (req.body.description!="")
         )
             next();
-        else{
-            /*if(req.body.this_req_sendby==="Edit Page"){
+//認證不通過處理       
+            else{
+            if(req.body.this_req_sendby==="Edit Page"){
                 const method = "?_method=PUT"
                 res.render("newedit",{
                     restaurant:req.body,
                     action:`/restaurants/${req.params._id}${method}`,
                     page:"Edit Page",
-                    message:"後端認證不通過"
+                    message:"<span>後端認證不通過</span><br/>"
                 });
             }
             else{
@@ -30,10 +32,9 @@ module.exports = {
                     restaurant:req.body,
                     action:`/restaurants`,
                     page:"New Page",
-                    message:"後端認證不通過"
+                    message:"<span>後端認證不通過</span><br/>"
                 });
-            }*/
-            
+            }
         }
     }
 }
