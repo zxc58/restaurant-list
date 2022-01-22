@@ -19,14 +19,15 @@
         {{{message}}}
         <label for="name" >name:</label>
         <input class="form-control" type="text" name="name" value="{{restaurant.name}}" 
-        placeholder="必填" /><br/>
+        placeholder="必填" required/><br/>
         
         <label for="name_en">English name:</label>
         <input class="form-control" type="text" name="name_en" placeholder="輸入英文、數字"
         value="{{restaurant.name_en}}" pattern="^[^\u4e00-\u9ta5]+$" required><br/>
         
         <label for="google_map">map url:</label>
-        <input class="form-control" type="url" name="google_map" value="{{restaurant.google_map}}" placeholder="輸入url"/><br/>
+        <input class="form-control" type="url" name="google_map" value="{{restaurant.google_map}}" 
+        placeholder="輸入url" required/><br/>
         
         <label for="category">category:</label>
         <input class="form-control" type="text" name="category" value="{{restaurant.category}}" 
@@ -34,15 +35,15 @@
         
         <label for="image">image:</label>
         <input class="form-control" type="url" name="image" value="{{restaurant.image}}"
-        placeholder="url"/><br/>
+        placeholder="url" required/><br/>
         
         <label for="location">location:</label>
         <input class="form-control" type="text" name="location" value="{{restaurant.location}}" 
-        pattern="^[\u4e00-\u9ta5\w\s]+$" placeholder="輸入中英文 數字"/><br/>
+        pattern="^[\u4e00-\u9ta5\w\s]+$" placeholder="輸入中英文 數字" required/><br/>
         
         <label for="phone">phone:</label>
         <input class="form-control" type="tel" name="phone" value="{{restaurant.phone}}" pattern="^[\d\s]+$"
-        placeholder="輸入數字"/><br/>
+        placeholder="輸入數字" required/><br/>
         
         <label for="rating">rating:</label>
         <input class="form-control" type="number" name="rating" value="{{restaurant.rating}}" min="0.0" max="5.0" step="0.1"

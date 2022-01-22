@@ -8,12 +8,12 @@ module.exports = {
             (/^[\w\s]+$/.test(req.body.name_en))&&
             (/^[\d\s]+$/.test(req.body.phone))&&
             (0<=parseFloat(req.body.rating)<=5)&&
-            (req.body.name!="")&&
-            (req.body.category!="")&&
-            (req.body.location!="")&&
-            (req.body.image!="")&&
-            (req.body.google_map!="")&&
-            (req.body.description!="")
+            (req.body.name!="")&&//前端 只有required
+            (req.body.category!="")&&//前端 只有required
+            (req.body.location!="")&&//前端 只有required
+            (req.body.image!="")&&//還在尋找url regex
+            (req.body.google_map!="")&&//還在尋找url regex
+            (req.body.description!="")//前端 只有required
         )
             next();
 //認證不通過處理       
