@@ -11,11 +11,13 @@ router.get("/",(req,res)=>{
         a={$or: [{name:search_value},{name_en:search_value},{category:search_value}]};
     }
     Restaurant.find(a).lean().sort({name:"asc"}).then(restaurants=>{
-        res.render("index",{restaurants,search_value:req.query.keyword});
+        const db_result =JSON.stringify(restaurants);
+        res.render("index",{restaurants,search_value:req.query.keyword,db_result
+        });
     })
     .catch(error=>{
         console.log(error);
-        res.render("err",{});
+        res.render("err");
     });
 });
 
