@@ -18,10 +18,10 @@
       <form class="form-group" action="{{action}}" method="POST">
         <label for="name" >name:</label>
         <input class="form-control" type="text" name="name" value="{{restaurant.name}}" 
-        placeholder="必填" required/><br/>
+        placeholder="必填" /><br/>
         
         <label for="name_en">English name:</label>
-        <input class="form-control" type="text" name=="name_en" placeholder="輸入英文、數字"
+        <input class="form-control" type="text" name="name_en" placeholder="輸入英文、數字"
         value="{{restaurant.name_en}}" pattern="^[^\u4e00-\u9ta5]+$" required><br/>
         
         <label for="google_map">map url:</label>
@@ -44,13 +44,16 @@
         placeholder="輸入數字"/><br/>
         
         <label for="rating">rating:</label>
-        <input class="form-control" type="text" value="{{restaurant.rating}}" pattern="^[0-5]\.?[1-9]?" 
+        <input class="form-control" type="number" name="rating" value="{{restaurant.rating}}" min="0.0" max="5.0" step="0.1"
         placeholder="輸入數字 如1.5" required/><br/>
         
         <label for="description">description</label><br/>
         <textarea class="form-control" name="description" placeholder="必填" required>{{restaurant.description}}</textarea><br/>
         
+        <input type="text" name="this_req_sendby" value="{{page}}" style="display:none" >
+        
         <button type="submit" class="btn btn-success">提交</button>
+        {{message}}
       </form>
     </div>
   </div>
