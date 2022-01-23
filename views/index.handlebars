@@ -82,7 +82,7 @@
     {{/if}}
   </div>
 </div>
-
+<!--排序功能-->
 <script>
 let x = JSON.parse(`{{{db_result}}}`);
 function f1(){
@@ -116,19 +116,6 @@ function f1(){
     document.getElementById("container").innerHTML=x.map(e=>f2(e)).join("");
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function f2(e){
