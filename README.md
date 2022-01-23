@@ -1,4 +1,4 @@
-![image](https://zxc58.github.io/restaurant-list/resPic.png)
+![image](https://raw.githubusercontent.com/zxc58/restaurant-list/main/resPic.png)
 ## 專案簡介
 
 此專案收集了一些知名餐廳，使用者可透過名稱或類別搜尋自己想找的餐廳，點開查看餐廳詳細資料，
