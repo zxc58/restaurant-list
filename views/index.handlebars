@@ -47,13 +47,13 @@
 </div>
 <!-- restaurant list -->
 <div class="container mt-5">
-  <div id="container" class="row row-cols-1 row-cols-md-3 g-4">
+  <div id="container" class="row row-cols-1 row-cols-md-3 g-5">
     {{#if restaurants.length}}
       {{#each restaurants}}
       <div class="col">
         <div class="card">
           <a href="/restaurants/{{this._id}}" class="text-secondary">
-            <div class="card mb-3">
+            <div class="card">
               <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
               <div class="card-body p-3">
                 <h6 class="card-title mb-1">{{this.name}}</h6>
