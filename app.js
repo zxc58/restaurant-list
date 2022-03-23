@@ -6,8 +6,15 @@ const indexRouter = require('./routes/index')
 const app = express()
 const port = 3000
 const methodOverride = require('method-override')
-
+const session = require("express-session")
+const auth = require("./config/passport").auth
 // app設定
+app.use(session({
+  secret: 'ThisIsMySecret',
+  resave: false,
+  saveUninitialized: true
+}))
+auth(app)
 app.use(express.urlencoded({ extended: true }))
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -19,3 +26,4 @@ app.use('/', indexRouter)
 app.listen(port, () => {
   console.log(`server start at http://localhost:${port}`)
 })
+
