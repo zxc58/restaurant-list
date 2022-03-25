@@ -10,7 +10,7 @@ db.on('error', () => {
   console.log('seeder error')
 })
 db.once('open', async () => {
-  bcrypt.genSalt(5).then(salt => bcrypt.hash(user[0].password, salt)).then(hash=>user[0].password=hash)
+  await bcrypt.genSalt(5).then(salt => bcrypt.hash(user[0].password, salt)).then(hash=>user[0].password=hash)
   await bcrypt.genSalt(5).then(salt => bcrypt.hash(user[1].password, salt)).then(hash=>user[1].password=hash)
   const a = await User.create(user)
   const [c, d] = [a[0]._id, a[1]._id]
