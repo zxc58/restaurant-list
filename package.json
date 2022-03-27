@@ -28,6 +28,7 @@
     "method-override": "^3.0.0",
     "mongoose": "^6.1.6",
     "passport": "^0.5.2",
+    "passport-facebook": "^3.0.0",
     "passport-local": "^1.0.0"
   }
 }
