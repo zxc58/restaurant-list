@@ -24,9 +24,9 @@ function auth (app) {
       .catch(err => done(err, false))
   }))
   passport.use(new FacebookStrategy({
-    clientID: 4813153298722595,
-    clientSecret: '37c9fc733111a9defb67a5bc5825a9c5',
-    callbackURL: 'http://localhost:3000/user/auth/facebook/callback',
+    clientID: parseInt( process.env.FACEBOOK_ID),
+    clientSecret: process.env.FACEBOOK_SECRET,
+    callbackURL: process.env.FACEBOOK_CALLBACK,
     profileFields: ['email', 'displayName']
   },
   (accessToken, refreshToken, profile, done) => {
@@ -59,7 +59,6 @@ function auth (app) {
   })
 }
 function authenticator (req, res, next) {
-  console.log(req.isAuthenticated())
   if (req.isAuthenticated()) {
     return next()
   }
