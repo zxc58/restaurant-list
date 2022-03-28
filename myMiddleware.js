@@ -1,19 +1,23 @@
 module.exports = {
   validationGuard: (req, res, next) => {
     // 篩選出put post
-    if (req.method === 'GET' || req.method === 'DELETE') { next() }
+    if (req.method === 'GET' || req.method === 'DELETE') {
+      next()
+    }
     // 開始認證資料
     else if (
       (/^[\w\s]+$/.test(req.body.name_en)) &&
-            (/^[\d\s]+$/.test(req.body.phone)) &&
-            (parseFloat(req.body.rating) >= 0 <= 5) &&
-            (req.body.name != '') &&// 前端 只有required
-            (req.body.category != '') &&// 前端 只有required
-            (req.body.location != '') &&// 前端 只有required
-            (req.body.image != '') &&// 還在尋找url regex
-            (req.body.google_map != '') &&// 還在尋找url regex
-            (req.body.description != '')// 前端 只有required
-    ) { next() }
+      (/^[\d\s]+$/.test(req.body.phone)) &&
+      (parseFloat(req.body.rating) >= 0 <= 5) &&
+      (req.body.name !== '') &&// 前端 只有required
+      (req.body.category !== '') &&// 前端 只有required
+      (req.body.location !== '') &&// 前端 只有required
+      (req.body.image !== '') &&// 還在尋找url regex
+      (req.body.google_map !== '') &&// 還在尋找url regex
+      (req.body.description !== '')// 前端 只有required
+    ) {
+      next()
+    }
     // 認證不通過處理
     else {
       if (req.body.this_req_sendby === 'Edit Page') {
