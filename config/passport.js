@@ -15,6 +15,7 @@ function auth (app) {
         }
         return bcrypt.compare(password, user.password).then(isMatch => {
           if (!isMatch) {
+            console.log('email inin')
             return done(null, false, { message: 'Email or Password incorrect.' })
           }
           return done(null, user)
