@@ -2,7 +2,7 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const User = require('../models/user')
 const bcrypt = require('bcryptjs')
-const FacebookStrategy = require("passport-facebook").Strategy
+const FacebookStrategy = require('passport-facebook').Strategy
 function auth (app) {
   app.use(passport.initialize())
   app.use(passport.session())
@@ -30,17 +30,13 @@ function auth (app) {
     profileFields: ['email', 'displayName']
   },
   (accessToken, refreshToken, profile, done) => {
-    /* User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-      return cb(err, user)
-    }) */
-    console.log(profile)
     const { name, email } = profile._json
     User.findOne({ email })
       .then(user => {
         if (user) return done(null, user)
         const randomPassword = Math.random().toString(36).slice(-8)
         bcrypt
-          .genSalt(10)
+          .genSalt(5)
           .then(salt => bcrypt.hash(randomPassword, salt))
           .then(hash => User.create({
             name,
@@ -48,7 +44,8 @@ function auth (app) {
             password: hash
           }))
           .then(user => done(null, user))
-          .catch(err => done(err, false))})
+          .catch(err => done(err, false))
+      })
   }))
 
   passport.serializeUser((user, done) => {
@@ -61,13 +58,13 @@ function auth (app) {
       .catch(err => done(err, null))
   })
 }
+function authenticator (req, res, next) {
+  console.log(req.isAuthenticated())
+  if (req.isAuthenticated()) {
+    return next()
+  }
+  res.redirect('/user/signin')
+}
 module.exports = {
-  authenticator: (req, res, next) => {
-    console.log(req.isAuthenticated())
-    if (req.isAuthenticated()) {
-      return next()
-    }
-    res.redirect('/user/signin')
-  },
-  auth
+  authenticator, auth
 }
