@@ -1,4 +1,5 @@
 // require modules and set const
+require('dotenv').config()
 const db = require('../../config/mongoose')
 const restaurants = require('../../restaurant.json').results
 const Restaurant = require('../restaurant')
@@ -18,5 +19,6 @@ db.once('open', async () => {
     if (i < 3 || i > 5) { restaurants[i].userId = c } else { restaurants[i].userId = d }
   }
   await Restaurant.create(restaurants)
+  console.log('seed success')
   process.exit()
 })

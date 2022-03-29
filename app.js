@@ -9,8 +9,8 @@ const app = express()
 const methodOverride = require('method-override')
 const session = require('express-session')
 const usePassport = require('./config/passport').auth
-const flash = require("connect-flash")
-const middleWare = require("./myMiddleware")
+const flash = require('connect-flash')
+const middleWare = require('./myMiddleware')
 
 // app設定
 

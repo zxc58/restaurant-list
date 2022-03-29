@@ -8,7 +8,7 @@ router.get('/new', (req, res) => {
   res.render('newedit', { action: '/restaurants', page: 'New Page' })
 })
 router.post('/', (req, res) => {
-  req.body.userId=req.user._id
+  req.body.userId = req.user._id
   Restaurant.create(req.body).then(() => res.redirect('/')).catch(err => console.log(err))
 })
 

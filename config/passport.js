@@ -6,7 +6,7 @@ const FacebookStrategy = require('passport-facebook').Strategy
 function auth (app) {
   app.use(passport.initialize())
   app.use(passport.session())
-  passport.use(new LocalStrategy({ usernameField: 'email',passReqToCallback: true  }, (req,email, password, done) => {
+  passport.use(new LocalStrategy({ usernameField: 'email', passReqToCallback: true }, (req, email, password, done) => {
     User.findOne({ email })
       .then(user => {
         if (!user) {
@@ -16,7 +16,7 @@ function auth (app) {
         return bcrypt.compare(password, user.password).then(isMatch => {
           if (!isMatch) {
             console.log('password incorrect')
-             return done(null, false, req.flash('error', 'password incorrect'))
+            return done(null, false, req.flash('error', 'password incorrect'))
           }
           return done(null, user)
         })
@@ -24,7 +24,7 @@ function auth (app) {
       .catch(err => done(err, false))
   }))
   passport.use(new FacebookStrategy({
-    clientID: parseInt( process.env.FACEBOOK_ID),
+    clientID: parseInt(process.env.FACEBOOK_ID),
     clientSecret: process.env.FACEBOOK_SECRET,
     callbackURL: process.env.FACEBOOK_CALLBACK,
     profileFields: ['email', 'displayName']

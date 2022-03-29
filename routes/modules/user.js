@@ -12,7 +12,8 @@ router.get('/signup', (req, res) => {
 })
 router.post('/signin',
   passport.authenticate('local', {
-    successRedirect: '/',failureFlash: true,
+    successRedirect: '/',
+    failureFlash: true,
     failureRedirect: '/user/signin'
   })
 )
@@ -34,7 +35,7 @@ router.post('/signup', (req, res) => {
       confirmPassword
     })
   }
-  
+
   User.findOne({ email: req.body.email }).then(user => {
     if (user) {
       errors.push({ message: 'email 已被註冊！' })
@@ -44,11 +45,12 @@ router.post('/signup', (req, res) => {
         email,
         password,
         confirmPassword
-    })}
+      })
+    }
     return bcrypt.genSalt(5).then(salt => bcrypt.hash(req.body.password, salt)).then(hash => {
       User.create({ name: req.body.name, email: req.body.email, password: hash })
         .then(() => {
-          req.flash("success_msg","Sign up success")
+          req.flash('success_msg', 'Sign up success')
           res.redirect('/user/signin')
         })
         .catch(err => console.log(err))
