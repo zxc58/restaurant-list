@@ -47,7 +47,10 @@ router.post('/signup', (req, res) => {
     })}
     return bcrypt.genSalt(5).then(salt => bcrypt.hash(req.body.password, salt)).then(hash => {
       User.create({ name: req.body.name, email: req.body.email, password: hash })
-        .then(() => res.redirect('/'))
+        .then(() => {
+          req.flash("success_msg","Sign up success")
+          res.redirect('/user/signin')
+        })
         .catch(err => console.log(err))
     }).catch(err => console.log(err))
   })

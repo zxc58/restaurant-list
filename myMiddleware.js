@@ -44,7 +44,6 @@ module.exports = {
     res.locals.success_msg = req.flash('success_msg')
     res.locals.warning_msg = req.flash('warning_msg')
     res.locals.error = req.flash('error')
-    console.log(res.locals.error)
     next()
   }
 }
