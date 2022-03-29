@@ -1,7 +1,9 @@
 ![image](https://raw.githubusercontent.com/zxc58/restaurant-list/main/resPic.png)
+![image](https://github.com/zxc58/restaurant-list/blob/main/signin.png)
+![image](https://github.com/zxc58/restaurant-list/blob/main/signup.png)
 ## 專案簡介
 
-此專案收集了一些知名餐廳，使用者可透過名稱或類別搜尋自己想找的餐廳，點開查看餐廳詳細資料，
+此專案讓使用者管理自己的餐廳，使用者須先登入後才可透過名稱或類別搜尋自己想找的餐廳，點開查看餐廳詳細資料，
 
 
 ## 環境/套件要求
@@ -31,7 +33,7 @@ use seed
 ```
 npm run seed
 ```
-用nodemon啟動
+啟動
 ```
-$npm run dev
+$npm start
 ```
