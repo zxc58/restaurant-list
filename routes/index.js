@@ -6,6 +6,6 @@ const user = require('./modules/user')
 const { authenticator } = require('../config/passport')
 
 router.use('/user', user)
-router.use('/restaurants', resetaurants)
+router.use('/restaurants', authenticator, resetaurants)
 router.use('/', authenticator, home)
 module.exports = router

@@ -6,17 +6,17 @@ const FacebookStrategy = require('passport-facebook').Strategy
 function auth (app) {
   app.use(passport.initialize())
   app.use(passport.session())
-  passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
+  passport.use(new LocalStrategy({ usernameField: 'email',passReqToCallback: true  }, (req,email, password, done) => {
     User.findOne({ email })
       .then(user => {
         if (!user) {
           console.log('That email is not registered!')
-          return done(null, false, { message: 'That email is not registered!' })
+          return done(null, false, req.flash('error', 'That email is not registered!'))
         }
         return bcrypt.compare(password, user.password).then(isMatch => {
           if (!isMatch) {
-            console.log('email inin')
-            return done(null, false, { message: 'Email or Password incorrect.' })
+            console.log('password incorrect')
+             return done(null, false, req.flash('error', 'password incorrect'))
           }
           return done(null, user)
         })
