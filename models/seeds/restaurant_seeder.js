@@ -15,15 +15,13 @@ db.once('open', async () => {
     const salt = await bcrypt.genSalt(5)
     const hashed = await bcrypt.hash(users[i].password, salt)
     users[i].password = hashed
-  }
-  const usersData = await User.create(users)
-  const usersIds = usersData.map(e => e._id)
-  
-  for (let i = 0; i < users.length; i++) {
+    const usersData = await User.create(users[i])
+    const userId = usersData._id
     users[i].restaurantsIds.forEach(e => {
-      restaurants[e - 1].userId = usersIds[i]
+      restaurants[e - 1].userId = userId
     })
   }
+
   await Restaurant.create(restaurants)
   console.log('seed success')
   process.exit()
