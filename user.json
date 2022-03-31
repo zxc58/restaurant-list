@@ -1,13 +1,15 @@
 {
-    "user":[
+    "results":[
         {
             "email": "user1@example.com",
-            "password": "12345678"
+            "password": "12345678",
+            "restaurantsIds":[1,2,3,7,8]
         }
         ,
         {
             "email": "user2@example.com",
-            "password": "12345678"
+            "password": "12345678",
+            "restaurantsIds":[4,5,6]
         }
     ]
 }
