@@ -11,13 +11,13 @@ db.on('error', () => {
   console.log('seeder error')
 })
 db.once('open', async () => {
-  for (let i = 0; i < users.length; i++) {
+  for (let oneUser of users) {
     const salt = await bcrypt.genSalt(5)
-    const hashed = await bcrypt.hash(users[i].password, salt)
-    users[i].password = hashed
-    const usersData = await User.create(users[i])
+    const hashed = await bcrypt.hash(oneUser.password, salt)
+    oneUser.password = hashed
+    const usersData = await User.create(oneUser)
     const userId = usersData._id
-    users[i].restaurantsIds.forEach(e => {
+    oneUser.restaurantsIds.forEach(e => {
       restaurants[e - 1].userId = userId
     })
   }
